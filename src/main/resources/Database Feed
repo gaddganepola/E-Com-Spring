@@ -1,0 +1,21 @@
+INSERT INTO product (name, description, brand, price, category, release_date, product_available, stock_quantity)
+VALUES
+('Smartphone X', 'Latest flagship smartphone', 'TechBrand', 799.99, 'Electronics', '2023-09-15', true, 120),
+
+('Wireless Earbuds', 'Noise-cancelling wireless earbuds', 'SoundPro', 149.49, 'Audio', '2023-04-12', true, 200),
+
+('Gaming Laptop', 'High performance laptop for gaming', 'GameTech', 1399.99, 'Computers', '2022-11-10', true, 35),
+
+('Smartwatch 3', 'Fitness tracking smartwatch', 'FitTime', 199.00, 'Wearables', '2024-02-25', false, 0),
+
+('4K Monitor', 'Ultra HD 27-inch monitor', 'ViewMax', 299.95, 'Accessories', '2023-06-08', true, 65),
+
+('Bluetooth Speaker', 'Portable waterproof speaker', 'BoomBox', 89.90, 'Audio', '2023-01-20', true, 150),
+
+('Mechanical Keyboard', 'RGB backlit gaming keyboard', 'KeyCraft', 109.99, 'Accessories', '2024-03-18', true, 80),
+
+('DSLR Camera', 'Professional photography camera', 'ShutterPro', 899.00, 'Photography', '2022-08-14', false, 5),
+
+('Electric Kettle', 'Stainless steel electric kettle', 'HomeEase', 49.99, 'Home Appliances', '2023-12-05', true, 90),
+
+('Air Purifier', 'HEPA air purifier for home use', 'BreatheEZ', 159.75, 'Home Appliances', '2023-07-28', true, 45);
