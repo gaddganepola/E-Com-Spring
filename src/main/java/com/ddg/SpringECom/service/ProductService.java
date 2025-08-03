@@ -15,4 +15,12 @@ public class ProductService {
     public List<Product> getAllProducts() {
         return repo.findAll();
     }
+
+    public Product getProductById(int id) {
+        Product product = repo.findById(id).orElse(null);
+        if (product == null) {
+            return new Product(-1);
+        }
+        return product;
+    }
 }
