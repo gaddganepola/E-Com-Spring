@@ -31,6 +31,11 @@ public class Product {
     private boolean productAvailable;
     private int stockQuantity;
 
+//    Store Image Data
+    private String imageName;
+    private String imageType;
+    private byte[] imageData;
+
     public Product(int id) {
         this.id = id;
     }
