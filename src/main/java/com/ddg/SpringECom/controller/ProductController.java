@@ -85,6 +85,7 @@ public class ProductController {
     @GetMapping("/products/search")
     public ResponseEntity<?> searchProducts(@RequestParam String keyword) {
         try {
+            System.out.println("Searching with : " + keyword);
             return new ResponseEntity<>(service.searchProducts(keyword), HttpStatus.OK);
         } catch (NoSuchElementException e) {
             return new ResponseEntity<>(e.getMessage(), HttpStatus.NOT_FOUND);
