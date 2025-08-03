@@ -12,6 +12,7 @@ import java.io.IOException;
 import java.util.List;
 import java.util.NoSuchElementException;
 
+@CrossOrigin(origins = "*")
 @RestController
 @RequestMapping("/api")
 public class ProductController {
@@ -77,6 +78,16 @@ public class ProductController {
             return new ResponseEntity<>(e.getMessage(), HttpStatus.NOT_FOUND);
         } catch (IOException e) {
             return new ResponseEntity<>(e.getMessage(), HttpStatus.BAD_REQUEST);
+        }
+    }
+
+//    Search Product
+    @GetMapping("/products/search")
+    public ResponseEntity<?> searchProducts(@RequestParam String keyword) {
+        try {
+            return new ResponseEntity<>(service.searchProducts(keyword), HttpStatus.OK);
+        } catch (NoSuchElementException e) {
+            return new ResponseEntity<>(e.getMessage(), HttpStatus.NOT_FOUND);
         }
     }
 

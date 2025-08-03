@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <title>Product Search</title>
+    <style>
+        body {
+          font-family: Arial, sans-serif;
+          padding: 2rem;
+        }
+        input {
+          padding: 0.5rem;
+          width: 300px;
+          font-size: 16px;
+        }
+        ul {
+          margin-top: 1rem;
+          padding: 0;
+          list-style-type: none;
+        }
+        li {
+          margin: 0.5rem 0;
+          padding: 0.5rem;
+          background-color: #f3f3f3;
+          border-radius: 4px;
+        }
+        .error {
+          color: red;
+          margin-top: 1rem;
+        }
+    </style>
+</head>
+<body>
+<h2>🔍 Live Product Search</h2>
+<input type="text" id="searchInput" placeholder="Type to search products..." />
+
+<ul id="resultsList"></ul>
+<div class="error" id="errorBox"></div>
+
+<script>
+    const searchInput = document.getElementById('searchInput');
+    const resultsList = document.getElementById('resultsList');
+    const errorBox = document.getElementById('errorBox');
+
+    searchInput.addEventListener('input', () => {
+      const keyword = searchInput.value.trim();
+      resultsList.innerHTML = '';
+      errorBox.textContent = '';
+
+      if (keyword.length === 0) return;
+
+      fetch(`http://localhost:8080/api/products/search?keyword=${encodeURIComponent(keyword)}`)
+        .then(async response => {
+          if (!response.ok) {
+            const errorText = await response.text(); // Extract string error message
+            throw new Error(errorText);
+          }
+
+          const products = await response.json();
+
+          if (products.length === 0) {
+            resultsList.innerHTML = '<li>No products found.</li>';
+          } else {
+            products.forEach(product => {
+              const li = document.createElement('li');
+              li.textContent = `${product.name} - ${product.category} - $${product.price}`;
+              resultsList.appendChild(li);
+            });
+          }
+        })
+        .catch(error => {
+          errorBox.textContent = `❌ ${error.message}`;
+        });
+    });
+</script>
+</body>
+</html>

@@ -58,4 +58,12 @@ public class ProductService {
 
         repo.save(existingProduct);
     }
+
+    public List<Product> searchProducts(String keyword) {
+        List<Product> products = repo.searchProducts(keyword);
+        if (products.isEmpty()) {
+            throw new NoSuchElementException("No products found for keyword: " + keyword);
+        }
+        return products;
+    }
 }
